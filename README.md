@@ -22,5 +22,5 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 Clique no botão abaixo para baixar o script:
 
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
-[![Baixar Script](https://img.shields.io/badge/-Download-purple?style=for-the-badge&logo=download&logoColor=white)](https://github.com/Alisonlg/HCStoreRP/archive/refs/heads/main.zip)
+[![Baixar Script](https://custom-icon-badges.demolab.com/badge/-Download-purple?style=for-the-badge&logo=download&logoColor=white)](https://github.com/Alisonlg/HCStoreRP/archive/refs/heads/main.zip)
 <!-- END LATEST DOWNLOAD BUTTON -->
