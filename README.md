@@ -15,12 +15,12 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 | `TestDrive`   | `timetest`  			 | "58.0"                              | Tempo em segundos que o jogador terá para testar o veículo                                                 |
 | `Requisicoes` | `token_integracao`     | "ySgesnxutya4as"                    | Token de integração, encontrado na dashboard do cliente na aba "Integrações"                               |
 | `Requisicoes` | `site_url`             | "demo.hcrp.store"                   | URL do site em nossa loja                                                                                  |
-| `Requisicoes` | `timetest`             | "demo.hcrp.store"                   | Tempo em segundos que o jogador terá para testar o veículo                                                 |
+| `Requisicoes` | `timetest`             | "30"                                | Tempo em segundos que o jogador terá para testar o veículo                                                 |
 
 ## 📥 Download
 
 Clique no botão abaixo para baixar o script:
 
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
-[![Baixar Script](https://img.shields.io/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white)](https://github.com/Alisonlg/HCStoreRP/archive/refs/heads/main.zip)
+[![Baixar Script](https://img.shields.io/badge/-Download-purple?style=for-the-badge&logo=download&logoColor=white)](https://github.com/Alisonlg/HCStoreRP/archive/refs/heads/main.zip)
 <!-- END LATEST DOWNLOAD BUTTON -->
