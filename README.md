@@ -12,10 +12,10 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 | `TestDrive`   | `pos`      		     | "vector3(-952.28, -3365.40, 13.94)" | Posição para teleportar o jogador para o test drive (/hcstore_getpos para obter a posição)                 |
 | `TestDrive`   | `heading`  			 | "58.0"                              | Direção da visão do jogador ao ser teleportado para o test drive (/hcstore_getpos para obter a posição)    |
 | `TestDrive`   | `distancia_permitida`  | "500.0"                             | Distância máxima permitida para o jogador durante o test drive, a partir do ponto inicial                  |
-| `TestDrive`   | `timetest`  			 | "58.0"                              | Tempo em segundos que o jogador terá para testar o veículo                                                 |
+| `TestDrive`   | `timetest`  			 | "30"                                | Tempo em segundos que o jogador terá para testar o veículo                                                 |
 | `Requisicoes` | `token_integracao`     | "ySgesnxutya4as"                    | Token de integração, encontrado na dashboard do cliente na aba "Integrações"                               |
 | `Requisicoes` | `site_url`             | "demo.hcrp.store"                   | URL do site em nossa loja                                                                                  |
-| `Requisicoes` | `timetest`             | "30"                                | Tempo em segundos que o jogador terá para testar o veículo                                                 |
+| `Requisicoes` | `tempo`                | "1"                                 | Tempo entre requisições de ativação, em minutos                                                            |
 
 ## 📥 Download
 
