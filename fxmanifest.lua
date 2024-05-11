@@ -14,11 +14,11 @@ client_scripts {
 }
 
 server_scripts {
-    "@vrp/lib/utils.lua",
-	"server-side/*"
+    '@vrp/lib/utils.lua',
+	'server-side/*'
 }
 
 ui_page 'html/index.html'
-files{
+files {
     'html/*'
 }

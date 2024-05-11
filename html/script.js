@@ -8,11 +8,31 @@ var selectedCategory;
 
 const OpenMenu = (data) => {
     $(`.main-wrapper`).fadeIn(0)
+    $(`:root`).fadeIn(0)
     AddRow(data.rows)
+}
+
+const OpenBalloon = (data) => {
+    $(`:root`).fadeIn(0)
+    $(`.balloon`).fadeIn(0)
+    $(`.balloondiv`).fadeIn(0)
+    AddRowBalloon(data.rows)
 }
 
 const CloseMenu = () => {
     $(`.main-wrapper`).fadeOut(0);
+    $(`:root`).fadeOut(0)
+    $(saved).remove();
+    RowsData = [];
+    Rows = [];
+    saved = "";
+};
+
+const CloseBalloon = () => {
+    $(`.main-wrapper`).fadeOut(1000);
+    $(`:root`).fadeOut(1000)
+    $(`.balloon`).fadeOut(1000)
+    $(`.balloondiv`).fadeOut(1000)
     $(saved).remove();
     RowsData = [];
     Rows = [];
@@ -54,6 +74,21 @@ function AddRow(data) {
             }
         }
         Rows[id] = element
+    }
+}
+
+function AddRowBalloon(data) {
+    RowsData = data
+    for (var i = 0; i < RowsData.length; i++) {
+        var message = RowsData[i].txt
+        var id = RowsData[i].id
+
+        if (id === 0) {
+            $('#title').html(message);
+
+        } else if (id === 1) {
+            $('#subtitle').html(message);
+        }
     }
 }
 
@@ -131,6 +166,11 @@ const CancelMenu = () => {
     return CloseMenu();
 }
 
+const CancelBalloon = () => {
+    $.post(`https://vrp_hcstore/closeMenu`)
+    return CloseBalloon();
+}
+
 window.addEventListener("message", (event) => {
     const data = event.data
     const info = data.data
@@ -140,6 +180,10 @@ window.addEventListener("message", (event) => {
             return OpenMenu(info);
         case "CLOSE_MENU":
             return CloseMenu();
+        case "OPEN_BALLOON":
+            return OpenBalloon(info);
+        case "CLOSE_BALLOON":
+            return CancelBalloon();
         case "PUT_CATEGORY":
             categorys = JSON.stringify(data.data)
             categorysString = JSON.parse(categorys);
