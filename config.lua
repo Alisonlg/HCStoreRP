@@ -19,7 +19,7 @@ Config.Main = {
     },
     ['Mensagens'] = {
         ['Tela'] = {
-            ativo = true,
+            Ativo = true,
             Titulo_ativo = true,
             Titulo_mensagem = 'Obrigado pela compra @player',
             SubTitulo_ativo = true,
