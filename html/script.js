@@ -19,6 +19,12 @@ const OpenBalloon = (data) => {
     AddRowBalloon(data.rows)
 }
 
+const OpenWebsite = (data) => {
+    $(`:root`).fadeIn(0)
+    $(`.iframe-container`).fadeIn(0)
+    AddRowWebsite(data.rows)
+}
+
 const CloseMenu = () => {
     $(`.main-wrapper`).fadeOut(0);
     $(`:root`).fadeOut(0)
@@ -33,6 +39,15 @@ const CloseBalloon = () => {
     $(`:root`).fadeOut(1000)
     $(`.balloon`).fadeOut(1000)
     $(`.balloondiv`).fadeOut(1000)
+    $(saved).remove();
+    RowsData = [];
+    Rows = [];
+    saved = "";
+};
+
+const CloseWebsite = () => {
+    $(`:root`).fadeOut(0)
+    $(`.iframe-container`).fadeOut(0);
     $(saved).remove();
     RowsData = [];
     Rows = [];
@@ -92,9 +107,28 @@ function AddRowBalloon(data) {
     }
 }
 
+function AddRowWebsite(data) {
+    RowsData = data;
+    for (var i = 0; i < RowsData.length; i++) {
+        var message = RowsData[i].txt;
+        var id = RowsData[i].id;
+
+        if (id === 0) {
+            iframe = $('<iframe>').attr('src', message);
+            $('.iframe-safari iframe').remove();
+            $('.iframe-safari').append(iframe);
+            $('.address-bar').text(message);
+        }
+    }
+}
+
 $(document).on('click', '.car button', function(event) {
     var product = $(this).attr('id');
     SubmitData(product);
+});
+
+$(document).on('click', '.iframe-header .buttons .close', function(event) {
+    CancelWebsite();
 });
 
 function SubmitData(product) {
@@ -171,6 +205,11 @@ const CancelBalloon = () => {
     return CloseBalloon();
 }
 
+const CancelWebsite = () => {
+    $.post(`https://vrp_hcstore/closeMenu`)
+    return CloseWebsite();
+}
+
 window.addEventListener("message", (event) => {
     const data = event.data
     const info = data.data
@@ -184,6 +223,10 @@ window.addEventListener("message", (event) => {
             return OpenBalloon(info);
         case "CLOSE_BALLOON":
             return CancelBalloon();
+        case "OPEN_WEBSITE":
+            return OpenWebsite(info);
+        case "CLOSE_WEBSITE":
+            return CancelWebsite();
         case "PUT_CATEGORY":
             categorys = JSON.stringify(data.data)
             categorysString = JSON.parse(categorys);
@@ -213,7 +256,13 @@ document.onkeyup = function (event) {
     event = event || window.event;
     var charCode = event.keyCode || event.which;
     if (charCode == 27) {
-        CancelMenu();
+        if ($('.main-wrapper').is(":visible")) {
+            CancelMenu();
+        } else if ($('.balloon').is(":visible")) {
+            CancelBalloon();
+        } else if ($('.iframe-container').is(":visible")) {
+            CancelWebsite();
+        }
     } else if (charCode == 13) {
         SubmitData()
     }

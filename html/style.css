@@ -24,7 +24,7 @@ html, body {
 }
 
 .main-wrapper {
-	display: none;
+    display: none;
     width: 50%;
     max-width: 1000px;
     max-height: 600px;
@@ -91,8 +91,8 @@ html, body {
 .body .car {
     flex: 1 1 auto;
     margin-right: 10px;
-    min-height: 250px;
-    max-height: 250px;
+    min-height: 300px;
+    max-height: 300px;
     text-align: center;
 
     display: flex;
@@ -108,15 +108,20 @@ html, body {
     align-content: center;
     align-items: center;
 }
+
 .body .car h3 {
     font-weight: bold;
     align-items: center;
     align-content: center;
     justify-content: center;
 }
+
 .body .car img {
     flex: 1 1 auto;
+    max-width: 200px;
+    height: auto;
 }
+
 .body .car .btn {
     flex: 1 1 auto;
     border-radius: 0 !important;
@@ -190,7 +195,7 @@ html, body {
     background: #171717;
 }
 
-  :root {
+:root {
     --desired-size: 20;
     --coefficient: 7px;
     --size: calc(var(--desired-size) * var(--coefficient));
@@ -198,106 +203,180 @@ html, body {
     --chord: hsl(45, 100%, 40%);
     --shine: hsla(0, 0%, 100%, 0.75);
     display: none;
-  }
-  .balloondiv {
+}
+
+.balloondiv {
     width: auto;
     height: auto;
     position: absolute;
     display: none;
-  }
-  .balloondiv h1 {
+}
+
+.balloondiv h1 {
     font-size: 72px;
     text-shadow: black 2px 2px;
     text-align: center;
     font-family: "Freeman", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  .balloondiv h3 balloon {
+.balloondiv h3 balloon {
     font-size: 36px;
     text-shadow: black 2px 2px;
     text-align: center;
     font-family: "Freeman", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  body {
+body {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-  }
+}
 
-  .balloon {
-    --primary-color: hsla(var(--h, 0), 100%, 50%, 0.8);
-    --size: calc(var(--s, 10) * var(--coefficient));
-    height: calc(1.2 * var(--size));
-    width: var(--size);
-    background: var(--primary-color);
-    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
-    position: absolute;
-    top: 50%;
-    left: calc(var(--x, 50) * 1%);
-    animation: float calc(var(--d, 1) * 1s) calc(var(--delay, 0) * -1s) infinite linear both;
-    display: none;
-  }
+.balloon {
+  --primary-color: hsla(var(--h, 0), 100%, 50%, 0.8);
+  --size: calc(var(--s, 10) * var(--coefficient));
+  height: calc(1.2 * var(--size));
+  width: var(--size);
+  background: var(--primary-color);
+  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--x, 50) * 1%);
+  animation: float calc(var(--d, 1) * 1s) calc(var(--delay, 0) * -1s) infinite linear both;
+  display: none;
+}
 
-  .balloon:before {
-    content: '';
-    position: absolute;
-    width: 20%;
-    height: 30%;
-    background: blue;
-    top: 8%;
-    left: 16%;
-    border-radius: 50%;
-    transform: rotate(40deg);
-    background: var(--shine);
-  }
+.balloon:before {
+  content: '';
+  position: absolute;
+  width: 20%;
+  height: 30%;
+  background: blue;
+  top: 8%;
+  left: 16%;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  background: var(--shine);
+}
 
+.balloon__handle {
+  width: 2%;
+  height: 60%;
+  background: var(--chord);
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+}
 
-  .balloon__handle {
-    width: 2%;
-    height: 60%;
-    background: var(--chord);
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    position: absolute;
-  }
+.balloon__handle:before,
+.balloon__handle:after {
+  content: '';
+  position: absolute;
+  height: 5%;
+  transform: translate(-50%, 0);
+  border-radius: 25% / 50%;
+  left: 50%;
+}
 
-  .balloon__handle:before,
-  .balloon__handle:after {
-    content: '';
-    position: absolute;
-    height: 5%;
-    transform: translate(-50%, 0);
-    border-radius: 25% / 50%;
-    left: 50%;
-  }
+.balloon__handle:before {
+  top: 0;
+  background: var(--chord);
+  width: 500%;
+}
 
-  .balloon__handle:before {
-    top: 0;
-    background: var(--chord);
-    width: 500%;
-  }
+.balloon__handle:after {
+  top: 5%;
+  background: var(--primary-color);
+  width: 700%;
+}
 
-  .balloon__handle:after {
-    top: 5%;
-    background: var(--primary-color);
-    width: 700%;
-  }
+.iframe-container {
+  display: none;
+}
 
+.iframe-div {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
 
-  @keyframes float {
-    from {
+.iframe-safari {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background-color: #313234;
+}
+
+.iframe-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(to bottom, #313234, #2E2D32);
+  border-bottom: 1px solid #4D5353;
+}
+
+.iframe-header .buttons {
+  display: flex;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.iframe-header .buttons div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.iframe-header .buttons .close {
+  background-color: #ff5f57;
+  cursor: pointer;
+}
+
+.iframe-header .buttons .minimize {
+  background-color: #ffbd2e;
+}
+
+.iframe-header .buttons .maximize {
+  background-color: #28c940;
+}
+
+.iframe-header .address-bar {
+  flex-grow: 1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #79797B;
+  border: 1px solid #5F5F61;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #fff;
+}
+
+iframe {
+  width: 100%;
+  height: calc(100% - 60px); /* Subtract header height */
+  border: none;
+}
+
+@keyframes float {
+  from {
       transform: translate(-50%, -50%) translate(0, 100vh);
-    }
-
-    to {
-      transform: translate(-50%, -50%) translate(0, -100vh);
-    }
   }
+
+  to {
+      transform: translate(-50%, -50%) translate(0, -100vh);
+  }
+}
