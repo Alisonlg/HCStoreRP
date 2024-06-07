@@ -86,7 +86,7 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 </details>
 <details>
   <summary><b>Versão 1.2024.4</b></summary>
-  • Framework passou a ser detectado automticamente<br>
+  • Framework passou a ser detectado automaticamente<br>
   • Adicionado menu de exibição de tempo restante em testdrive<br>
   • Refeito layout de mensagens de erro<br>
 </details>
