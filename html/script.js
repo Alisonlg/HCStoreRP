@@ -5,6 +5,7 @@ var hashcategoryproduct = {};
 var hashproductlogic = {};
 var hashproductimg = {};
 var selectedCategory;
+var countopen = false;
 
 const OpenMenu = (data) => {
     $(`.main-wrapper`).fadeIn(0)
@@ -23,6 +24,20 @@ const OpenWebsite = (data) => {
     $(`:root`).fadeIn(0)
     $(`.iframe-container`).fadeIn(0)
     AddRowWebsite(data.rows)
+}
+
+const OpenError = (data) => {
+    $(`:root`).fadeIn(0)
+    $(`.error-div`).fadeIn(0)
+    AddRowError(data.rows)
+}
+
+const OpenCountdown = (data) => {
+    countopen = true;
+    $(`:root`).fadeIn(0)
+    $(`.timer-div`).fadeIn(0)
+    AddRowCountdown(data.rows);
+    startCountdown();
 }
 
 const CloseMenu = () => {
@@ -54,6 +69,27 @@ const CloseWebsite = () => {
     saved = "";
 };
 
+const CloseError = () => {
+    if (countopen == false) {
+        $(`:root`).fadeOut(500)
+    }
+    $(`.error-div`).fadeOut(500);
+    $(saved).remove();
+    RowsData = [];
+    Rows = [];
+    saved = "";
+};
+
+const CloseCountdown = () => {
+    $(`:root`).fadeOut(500)
+    $(`.timer-div`).fadeOut(1000);
+    $(saved).remove();
+    RowsData = [];
+    Rows = [];
+    saved = "";
+    countopen = false;
+};
+
 function AddRow(data) {
     RowsData = data
     for (var i = 0; i < RowsData.length; i++) {
@@ -63,7 +99,6 @@ function AddRow(data) {
         var element
 
         if (type === 'select') {
-            // Se o tipo for uma caixa de seleção
             if (id === 0) {
                 element = $('<div class="categories">');
                 categories = Object.keys(hashcategoryproduct);
@@ -118,6 +153,35 @@ function AddRowWebsite(data) {
             $('.iframe-safari iframe').remove();
             $('.iframe-safari').append(iframe);
             $('.address-bar').text(message);
+        }
+    }
+}
+
+function AddRowError(data) {
+    RowsData = data;
+    for (var i = 0; i < RowsData.length; i++) {
+        var message = RowsData[i].txt;
+        var id = RowsData[i].id;
+
+        if (id === 0) {
+            $('#error-message').html(message);
+        }
+    }
+}
+
+function AddRowCountdown(data) {
+    RowsData = data;
+    for (var i = 0; i < RowsData.length; i++) {
+        var message = RowsData[i].txt;
+        var id = RowsData[i].id;
+
+        let minutes = Math.floor(message / 60);
+        let seconds = message % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        if (id === 0) {
+            let countdownElement = document.getElementById('countdown');
+            countdownElement.innerText = `${minutes}:${seconds}`;
         }
     }
 }
@@ -210,6 +274,16 @@ const CancelWebsite = () => {
     return CloseWebsite();
 }
 
+const CancelError = () => {
+    $.post(`https://vrp_hcstore/closeMenu`)
+    return CloseError();
+}
+
+const CancelCountdown = () => {
+    $.post(`https://vrp_hcstore/closeMenu`)
+    return CloseCountdown();
+}
+
 window.addEventListener("message", (event) => {
     const data = event.data
     const info = data.data
@@ -227,6 +301,14 @@ window.addEventListener("message", (event) => {
             return OpenWebsite(info);
         case "CLOSE_WEBSITE":
             return CancelWebsite();
+        case "OPEN_ERROR":
+            return OpenError(info);
+        case "CLOSE_ERROR":
+            return CancelError();
+        case "OPEN_COUNTDOWN":
+            return OpenCountdown(info);
+        case "CLOSE_COUNTDOWN":
+            return CancelCountdown();
         case "PUT_CATEGORY":
             categorys = JSON.stringify(data.data)
             categorysString = JSON.parse(categorys);
@@ -235,7 +317,6 @@ window.addEventListener("message", (event) => {
             hashproductlogic = {};
             hashproductimg = {};
 
-            // Preenchendo as hashes com as informações do JSON
             categorysString.categorys.forEach(function(category) {
                 hashcategoryproduct[category.name] = [];
                 category.products.forEach(function(product) {
@@ -275,3 +356,37 @@ $(document).click(function (event) {
         CancelMenu();
     }
 });
+
+
+function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    let timeText = countdownElement.innerText.trim();
+    let [minutes, seconds] = timeText.split(':').map(Number);
+    let timeLeft = minutes * 60 + seconds;
+    let countdownInterval;
+
+    function updateCountdown() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        
+        countdownElement.innerText = `${minutes}:${seconds}`;
+
+        if (countopen == false){
+            CancelCountdown();
+            clearInterval(countdownInterval);
+        }
+        
+        if (timeLeft <= 0) {
+            CancelCountdown();
+            clearInterval(countdownInterval);
+        } else {
+            timeLeft--;
+        }
+    }
+
+    clearInterval(countdownInterval);
+    countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+}

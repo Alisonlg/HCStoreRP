@@ -2,7 +2,7 @@ fx_version "bodacious"
 game "gta5"
 
 author 'Álison Gonçalves <github.com/Alisonlg>'
-version '1.2024.3'
+version '1.2024.4'
 
 shared_scripts {
 	'@es_extended/imports.lua',

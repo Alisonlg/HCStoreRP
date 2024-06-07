@@ -371,6 +371,83 @@ iframe {
   border: none;
 }
 
+.error-div {
+  display: none;
+}
+
+.error-balloon {
+  display: flex;
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f44336;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  margin: 20px;
+  animation: slideDown 0.5s ease-in-out forwards;
+}
+
+.error-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  background-color: white;
+  color: #f44336;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+#error-message {
+  font-size: 16px;
+}
+
+.timer-div {
+  display: none;
+}
+
+.timer {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: left;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.8em;
+  color: white;
+}
+
+#countdown {
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  background: none;
+}
+
+@keyframes slideDown {
+  from {
+      top: -50px; /* Começa fora da tela */
+      opacity: 0;
+  }
+  to {
+      top: 20px; /* Posição final */
+      opacity: 1;
+  }
+}
+
 @keyframes float {
   from {
       transform: translate(-50%, -50%) translate(0, 100vh);

@@ -1,9 +1,6 @@
 Config = {}
 
 Config.Main = {
-    ['Geral'] = { 
-        Framework = 'VRP'
-    },
     ['TestDrive'] = { 
         Ativo = true,
         Pos = vector3(-952.28, -3365.40, 13.94),
@@ -12,7 +9,7 @@ Config.Main = {
         Timetest = 30 -- segundos
     },
     ['Requisicoes'] = {
-        Token_integracao = 'RTeV7LhJ3mkq9Z2W8v6j1dXTgPY9SA',
+        Token_integracao = '8jZgTn6Lp1Gx4Fq2Rv5Ws9Bc3Vy0Xm7N',
         Site_url = 'demo.hcrp.store',
         Tempo_ativacoes = 1, -- minutos
         Tempo_vencimentos = 1 -- minutos
@@ -29,6 +26,10 @@ Config.Main = {
             Ativo = true,
             Mensagem = '@player comprou @itens',
             Background_html = '<br><div style="background: #B622B5FF; color: #fff; padding: 10px; border-radius: 10px; text-align: center; width:50%; font-weight: bold" margin: 10px 0;><b>{0}</b></div><br>'
+        },
+        ['Erros'] = {
+            TestDrive_emteste = 'Você já está testando um carro',
+            TestDrive_saiuarea = 'Você saiu da área de testdrive'
         }
     },
     ['Blips'] = {

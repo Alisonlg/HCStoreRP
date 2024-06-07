@@ -24,13 +24,12 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 
 | Categoria        			   | Variável   			 | Exemplo                             | Descrição                                               										            |
 | ---------------------------- | ----------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `Geral`          			   | `Framework` 			 | "VRP"                               | Define o framework utilizado no servidor(VRP/VRPEX/ESX)        										    |
 | `TestDrive`      			   | `Ativo`    			 | "true"                              | Define se a função de test drive será utilizada         										            |
 | `TestDrive`      			   | `Pos`      		     | "vector3(-952.28, -3365.40, 13.94)" | Posição para teleportar o jogador para o test drive (/hcstore_getpos para obter a posição)                 |
 | `TestDrive`      			   | `Heading`  			 | "58.0"                              | Direção da visão do jogador ao ser teleportado para o test drive (/hcstore_getpos para obter a posição)    |
 | `TestDrive`      			   | `Distancia_permitida`   | "500.0"                             | Distância máxima permitida para o jogador durante o test drive, a partir do ponto inicial                  |
 | `TestDrive`      			   | `Timetest`  			 | "30"                                | Tempo em segundos que o jogador terá para testar o veículo                                                 |
-| `Requisicoes`    			   | `Token_integracao`      | "z3rA8tW1p2BxQ6fU7l9I0mJ4o5LcV3kY"  | Token de integração, encontrado na dashboard do cliente na aba "Integrações"                               |
+| `Requisicoes`    			   | `Token_integracao`      | "8jZgTn6Lp1Gx4Fq2Rv5Ws9Bc3Vy0Xm7N"  | Token de integração, encontrado na dashboard do cliente na aba "Integrações"                               |
 | `Requisicoes`    			   | `Site_url`              | "demo.hcrp.store"                   | URL do site em nossa loja                                                                                  |
 | `Requisicoes`    			   | `Tempo_ativacoes`       | "1"                                 | Tempo entre requisições de ativação, em minutos                                                            |
 | `Requisicoes`    			   | `Tempo_vencimentos`     | "1"                                 | Tempo entre requisições de vencimento, em minutos                                                          |
@@ -42,6 +41,8 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
 | `Mensagens.Chat` 			   | `Ativo`                 | "true"                              | Define se a mensagem em chat será exibida                                                                  |
 | `Mensagens.Chat` 			   | `Mensagem`              | "@player comprou @itens"            | Define a mensagem em que será exibida em chat (@player = player comprador/@itens = itens comprados)        |
 | `Mensagens.Chat` 			   | `Background_html`       | "<b>{0}</b>"                        | Define o layout da mensagem que será enviada, deve ser feito em html ({0} = mensagem enviada)              |
+| `Mensagens.Erros` 		   | `TestDrive_emteste`     | "Você já está testando um carro"    | Define a mensagem que será exibida ao executar o comando /testdrive já estando em um testdrive             |
+| `Mensagens.Erros` 		   | `TestDrive_saiuarea`    | "Você saiu da área de testdrive"    | Define a mensagem que será exibida ao sair da área de testdrive                                            |
 | `Blips.TestDrive.IconMap`    | `Ativo`      			 | "true"                        	   | Define se o icone será exibido no mapa               														|
 | `Blips.TestDrive.IconMap`    | `Type`      			 | "326"                        	   | Define o icone que será exibido (https://docs.fivem.net/docs/game-references/blips/)              			|
 | `Blips.TestDrive.IconMap`    | `Pos`      			 | "vector3(-29.69, -1105.01, 26.42)"  | Define a posição do icone no mapa (/hcstore_getpos para obter a posição)              						|
@@ -82,4 +83,10 @@ Antes de utilizar o script, é necessário fazer algumas configurações. Veja a
   • Adicionada a opção de framework ESX<br>
   • Adicionada função de blips e icones em mapa<br>
   • Adicionado menu Website, onde será possível abrir a loja por dentro do servidor<br>
+</details>
+<details>
+  <summary><b>Versão 1.2024.4</b></summary>
+  • Framework passou a ser detectado automticamente<br>
+  • Adicionado menu de exibição de tempo restante em testdrive<br>
+  • Refeito layout de mensagens de erro<br>
 </details>
